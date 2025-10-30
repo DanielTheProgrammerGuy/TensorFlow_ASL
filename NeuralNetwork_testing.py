@@ -44,6 +44,7 @@ while True:
         int(center[1]-BOUNDING_BOX_SIZE/2):int(center[1]+BOUNDING_BOX_SIZE/2),
         0:3].copy() / 255
     image = cv2.resize(image,(SIZE,SIZE))
+    np.flip(frame,0)
     if image is not None:
         guess = model.predict(image[np.newaxis,...], verbose=0)
         print("\r",outputs_to_labels(guess)[0], end = "")
