@@ -99,7 +99,7 @@ train_ds = (
 val_ds = val_ds.batch(64).prefetch(tf.data.AUTOTUNE)
 
 checkpoint = tf.keras.callbacks.ModelCheckpoint("best_model.keras", save_best_only=True, monitor="val_accuracy", mode="max")
-early_stop = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)
+early_stop = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 lr_schedule = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=2, min_lr=1e-5)
 
 model.fit(train_ds, epochs=40,verbose=1,validation_data=val_ds, callbacks=[checkpoint, early_stop])
