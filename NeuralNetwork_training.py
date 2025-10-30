@@ -22,7 +22,7 @@ data_augment = tf.keras.Sequential([
 
 SIZE =128
 if input("load old data?(y/n): ") == "y":
-    model = load_model("model.keras")
+    model = load_model("best_model.keras")
 else:
     model = Sequential((
         # --- Convolution Block 1 ---
