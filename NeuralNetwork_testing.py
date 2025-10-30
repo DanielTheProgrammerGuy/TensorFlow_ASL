@@ -47,6 +47,16 @@ while True:
     if image is not None:
         guess = model.predict(image[np.newaxis,...], verbose=0)
         print("\r",outputs_to_labels(guess)[0], end = "")
+        cv2.putText(
+            frame,
+            str(outputs_to_labels(guess)[0]),
+            (int(center[0]+BOUNDING_BOX_SIZE/2),int(center[1]-BOUNDING_BOX_SIZE/2)),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            3,
+            BOUNDING_BOX_COLOR,
+            3,
+            cv2.LINE_AA
+        )
 
     frame[bounding_box_overlay==1] = BOUNDING_BOX_COLOR
     cv2.imshow("frame", frame)
