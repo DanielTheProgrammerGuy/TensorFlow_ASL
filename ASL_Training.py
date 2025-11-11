@@ -5,11 +5,12 @@ from tensorflow.keras.layers import Dense, Flatten, Conv2D, MaxPooling2D, Dropou
 from tensorflow.keras import layers
 from tensorflow.keras.models import load_model
 
+data = np.load("ASL_data.npz")
 
-training_data =np.load("training_data.npy")
-training_labels =np.load("training_labels.npy")
-test_data = np.load("test_data.npy")
-test_labels = np.load("test_labels.npy")
+training_data =data["train_data"]
+training_labels = data["train_label"]
+test_data = data["test_data"]
+test_labels = data["test_label"]
 
 data_augment = tf.keras.Sequential([
     layers.RandomFlip("horizontal"),

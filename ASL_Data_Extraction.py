@@ -50,7 +50,4 @@ print("Training:", training_data.shape, training_labels.shape)
 print("Test:", test_data.shape, test_labels.shape)
 
 # Save preprocessed data
-np.save("training_data.npy", training_data)
-np.save("training_labels.npy", training_labels)
-np.save("test_data.npy", test_data)
-np.save("test_labels.npy", test_labels)
+np.savez("ASL_data", train_data = training_data, train_label = training_labels, test_data = test_data, test_label = test_labels)
